@@ -4,13 +4,16 @@ docker pull ghcr.io/ssmirr/conduit/conduit:latest
 
 # اجرای کانتینر
 
-docker run -d \
---name conduit \
--v conduit-data:/home/conduit/data \
---restart unless-stopped \
-ghcr.io/ssmirr/conduit/conduit:latest \
-start -m 500 -b 40
 
+docker run -d \
+  --name conduit \
+  --restart unless-stopped \
+  -v conduit-data:/home/conduit/data \
+  ghcr.io/ssmirr/conduit/conduit:2fd31d4 \
+  start \
+  --data-dir /home/conduit/data \
+  --max-clients 200 \
+  --bandwidth 5
 
 
 # چک کن که اجرا شده
